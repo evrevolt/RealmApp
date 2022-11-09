@@ -47,11 +47,6 @@ class TaskListViewController: UITableViewController {
         
         cell.configurateCell(with: taskList)
         
-        
-        
-        
-        
-        
         return cell
     }
     
@@ -76,7 +71,6 @@ class TaskListViewController: UITableViewController {
             tableView.reloadRows(at: [indexPath], with: .automatic)
             isDone(true)
         }
-        
         
         tableView.reloadData()
         
