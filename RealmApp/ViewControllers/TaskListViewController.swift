@@ -44,6 +44,9 @@ class TaskListViewController: UITableViewController {
         content.text = taskList.name
         content.secondaryText = "\(taskList.tasks.count)"
         cell.contentConfiguration = content
+        
+        cell.configurateCell(with: taskList)
+        
         return cell
     }
     
@@ -133,4 +136,39 @@ extension TaskListViewController {
             tableView.insertRows(at: [rowIndex], with: .automatic)
         }
     }
+}
+
+extension UITableViewCell {
+    
+    func configurateCell(with taskLists: TaskList) {
+        
+        let currentTask = taskLists.tasks.filter("isComplete = false")
+        let comletedTask = taskLists.tasks.filter("isComplete = true")
+        let allTask = currentTask.count + comletedTask.count
+        
+        var content = defaultContentConfiguration()
+        
+        content.text = taskLists.name
+        
+        func getName(){
+            content.secondaryText = "\(currentTask.count)/\(allTask)"
+        }
+        
+        
+        if !currentTask.isEmpty {
+            getName()
+            accessoryType = .none
+        } else if !comletedTask.isEmpty {
+            getName()
+            accessoryType = .checkmark
+        } else {
+            accessoryType = .none
+            getName()
+        }
+        
+        contentConfiguration = content
+    }
+    
+    
+    
 }
