@@ -47,6 +47,11 @@ class TaskListViewController: UITableViewController {
         
         cell.configurateCell(with: taskList)
         
+        
+        
+        
+        
+        
         return cell
     }
     
@@ -95,9 +100,7 @@ class TaskListViewController: UITableViewController {
             taskLists = taskLists.sorted(byKeyPath: "name", ascending: true)
         } else {
             taskLists = taskLists.sorted(byKeyPath: "date", ascending: false)
-            
         }
-        
         tableView.reloadData()
     }
     
@@ -153,7 +156,6 @@ extension UITableViewCell {
         func getName(){
             content.secondaryText = "\(currentTask.count)/\(allTask)"
         }
-        
         
         if !currentTask.isEmpty {
             getName()
